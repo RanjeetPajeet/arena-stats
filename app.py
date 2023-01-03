@@ -48,6 +48,7 @@ with tab1:
         spacer()
         st.markdown("### Winrates")
         st.write(get_2v2_winrates(st.session_state.data_2v2))
+        spacer()
         st.markdown("## Rating over time")
         
 
@@ -55,6 +56,9 @@ with tab2:
     st.header("3v3 Data")
     if st.session_state.data_3v3 is not None:
         st.write(st.session_state.data_3v3[::-1])
+        spacer()
+        st.markdown("### Winrates")
+        st.write(get_3v3_winrates(st.session_state.data_3v3))
         spacer()
         st.markdown("## Rating over time")
 
