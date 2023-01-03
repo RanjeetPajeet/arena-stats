@@ -6,6 +6,7 @@ import altair as alt
 
 def plot_data(data: pd.DataFrame) -> alt.Chart:
     data = data.copy()
+    data = data[10:]
     data["matchNum"] = [i+1 for i in range(len(data))]
     min_rating = min(data["newTeamRating"])
     max_rating = max(data["newTeamRating"])
