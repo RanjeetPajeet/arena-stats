@@ -12,6 +12,8 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     max_rating = max(data["newTeamRating"])
     ylims = (int(min_rating/1.01), int(max_rating*1.05))
     
+    data["maxRating"] = [max_rating for i in range(len(data))]
+    
     chart = alt.Chart(data).mark_area(
             color=alt.Gradient(
                 gradient="linear",
@@ -27,6 +29,9 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
         ).encode(
             x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=(min(data["matchNum"]), max(data["matchNum"])))),
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
+    ) + alt.Chart(data).mark_line(color = "#ffffff",opacity = 1,strokeWidth = 2).encode(
+        x=alt.X("matchNum", axis=alt.Axis(title="Match #")),
+        y=alt.Y("maxRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
     )
     chart = chart.properties(height=600)
     chart = chart.properties(width =700)
