@@ -47,6 +47,7 @@ with tab1:
     if st.session_state.data_2v2 is not None:
         st.write(st.session_state.data_2v2[::-1])
         spacer()
+        st.write(plot_data2(st.session_state.data_2v2))
         per_comp_2v2, per_map_2v2 = st.columns(2)
         with per_comp_2v2:
             st.markdown("### Winrates per comp")
