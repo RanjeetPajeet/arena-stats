@@ -302,16 +302,19 @@ def get_2v2_winrates_per_class(data_2v2: pd.DataFrame) -> pd.DataFrame:
     Finds the winrates for each unique class in the data.
     """
     classes = ['warrior', 'shaman', 'rogue', 'paladin', 'hunter', 'druid', 'warlock', 'mage', 'priest', 'deathknight']
-    new_df = pd.DataFrame(columns=['wins', 'games', 'winrate'])
-    # loop through each class and find the winrate for that class
+    new_df = pd.DataFrame(columns=['class', 'wins', 'games', 'winrate'])
     for c in classes:
+        # get the data for the current class (where the enemyComp column contains the current class)
         df = data_2v2[data_2v2['enemyComp'].str.contains(c)]
-        df['wins'] = df['win'].astype(int)
-        df['games'] = 1
-        df = df.groupby(['enemyComp']).agg({'wins': 'sum', 'games': 'sum'})
-        df['winrate'] = df['wins'] / df['games']
-        df['winrate'] = df['winrate'].apply(lambda x: "{:.1%}".format(x))
-        df = df.sort_values(by=['winrate'], ascending=False)
-        df = df.reset_index()
-        new_df = new_df.append(df)
+        # get the number of wins and games for the current class
+        wins = df['win'].sum()
+        games = df['win'].count()
+        # calculate the winrate for the current class
+        winrate = wins / games
+        # add the data to the new dataframe
+        new_df = new_df.append({'class': c, 'wins': wins, 'games': games, 'winrate': winrate}, ignore_index=True)
+    # format the winrate column so it's a percentage and has 1 decimal place
+    new_df = new_df.sort_values(by=['winrate'], ascending=False)
+    new_df['winrate'] = new_df['winrate'].apply(lambda x: "{:.1%}".format(x))
+    new_df = new_df.reset_index()
     return new_df
