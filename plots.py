@@ -40,6 +40,7 @@ def plot_data2(data: pd.DataFrame) -> alt.Chart:
             strokeWidth=2,
             interpolate="monotone",
             clip=True,
+            line=True,
         ).encode(
             x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=(min(data["matchNum"]), max(data["matchNum"])))),
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
