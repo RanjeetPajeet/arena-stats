@@ -48,7 +48,7 @@ with tab1:
         spacer()
         per_comp_2v2, per_map_2v2 = st.columns(2)
         with per_comp_2v2:
-            st.markdown("### Winrates")
+            st.markdown("### Winrates per comp")
             st.write(get_2v2_winrates(st.session_state.data_2v2))
         with per_map_2v2:
             st.markdown("### Winrates per map")
