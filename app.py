@@ -40,7 +40,8 @@ spacer()
 
 
 
-tab1, tab2, tab3 = st.tabs(["**2v2**", "**3v3**", "**5v5**"])
+tab1, tab2, tab3 = st.tabs(["**2v2**", "**3v3**", "###5v5"])
+
 
 with tab1:
     st.header("2v2 Data")
