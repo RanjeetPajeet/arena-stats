@@ -1,4 +1,5 @@
 from data import *
+from misc import *
 import streamlit as st
 
 
@@ -7,6 +8,7 @@ st.set_page_config(
     layout="centered",
     page_icon=":crossed_swords:"
 )
+hide_element("footer", "class", "css-1lsmgbg egzxvld0")
 
 
 def spacer():
