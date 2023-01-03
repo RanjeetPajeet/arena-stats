@@ -1,7 +1,7 @@
 from data import *
 from misc import *
 from plots import *
-import streamlit as st
+# import streamlit as st
 
 
 st.set_page_config(
