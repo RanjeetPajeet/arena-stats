@@ -76,7 +76,7 @@ with tab2:
         st.write(get_3v3_winrates(st.session_state.data_3v3))
         spacer()
         st.markdown("### Rating over time")
-        st.write(plot_data(st.session_state.data_3v3))
+        st.write(plot_data(st.session_state.data_3v3,True))
 
         
         
