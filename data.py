@@ -97,8 +97,8 @@ def get_2v2_data() -> pd.DataFrame:
     for i in range(len(teamPlayerClass1s)):
         teamClasses = sort_tuple((teamPlayerClass1s[i], teamPlayerClass2s[i]))
         enemyClasses = sort_tuple((enemyPlayerClass1s[i], enemyPlayerClass2s[i]))
-        teamComps.append(teamClasses[0] + '   ' + teamClasses[1])
-        enemyComps.append(enemyClasses[0] + '   ' + enemyClasses[1])
+        teamComps.append(teamClasses[0] + ' - ' + teamClasses[1])
+        enemyComps.append(enemyClasses[0] + ' - ' + enemyClasses[1])
     data_2v2['win'] = data['isWin']
     data_2v2['date'] = data['startTime']
     data_2v2['map'] = data['mapName']
