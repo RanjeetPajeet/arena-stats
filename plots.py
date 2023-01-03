@@ -15,6 +15,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     ylims = (int(min_rating/1.01), int(max_rating*1.05))
     
     data["maxRating"] = [max_rating for i in range(len(data))]
+    data["Max Rating"] = data["maxRating"]  # added for better tooltip
     
     chart = alt.Chart(data).mark_area(
             color=alt.Gradient(
@@ -34,7 +35,8 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
             tooltip=["Match", "Rating"]
     ) + alt.Chart(data).mark_line(color = "#ffffff",opacity = 0.05,strokeWidth = 2).encode(
         x=alt.X("matchNum", axis=alt.Axis(title="Match #")),
-        y=alt.Y("maxRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
+        y=alt.Y("maxRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims)),
+        tooltip=["Max Rating"]
     )
     chart = chart.properties(height=600)
     chart = chart.properties(width =700)
