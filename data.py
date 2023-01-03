@@ -279,20 +279,39 @@ def get_5v5_winrates_per_map(data_5v5: pd.DataFrame) -> pd.DataFrame:
 
 
 
+# def get_2v2_winrates_per_class(data_2v2: pd.DataFrame) -> pd.DataFrame:
+#     """
+#     Finds the winrates for each unique class in the data.
+#     """
+#     classes = ['warrior', 'shaman', 'rogue', 'paladin', 'hunter', 'druid', 'warlock', 'mage', 'priest', 'deathknight']
+#     data_2v2['wins'] = data_2v2['win'].astype(int)
+#     data_2v2['games'] = 1
+#     # loop through each enemyComp column and note if the class is present
+#     for c in classes:
+#         data_2v2[c] = data_2v2['enemyComp'].str.contains(c)
+#     # group by the class and sum the
+#     data_2v2 = data_2v2.groupby(classes).agg({'wins': 'sum', 'games': 'sum'})
+#     data_2v2['winrate'] = data_2v2['wins'] / data_2v2['games']
+#     data_2v2 = data_2v2.sort_values(by=['winrate'], ascending=False)
+#     data_2v2['winrate'] = data_2v2['winrate'].apply(lambda x: "{:.1%}".format(x))
+#     data_2v2 = data_2v2.reset_index()
+#     return data_2v2
+
 def get_2v2_winrates_per_class(data_2v2: pd.DataFrame) -> pd.DataFrame:
     """
     Finds the winrates for each unique class in the data.
     """
     classes = ['warrior', 'shaman', 'rogue', 'paladin', 'hunter', 'druid', 'warlock', 'mage', 'priest', 'deathknight']
-    data_2v2['wins'] = data_2v2['win'].astype(int)
-    data_2v2['games'] = 1
-    # loop through each enemyComp column and note if the class is present
+    new_df = pd.DataFrame(columns=['wins', 'games', 'winrate'])
+    # loop through each class and find the winrate for that class
     for c in classes:
-        data_2v2[c] = data_2v2['enemyComp'].str.contains(c)
-    # group by the class and sum the
-    data_2v2 = data_2v2.groupby(classes).agg({'wins': 'sum', 'games': 'sum'})
-    data_2v2['winrate'] = data_2v2['wins'] / data_2v2['games']
-    data_2v2 = data_2v2.sort_values(by=['winrate'], ascending=False)
-    data_2v2['winrate'] = data_2v2['winrate'].apply(lambda x: "{:.1%}".format(x))
-    data_2v2 = data_2v2.reset_index()
-    return data_2v2
+        df = data_2v2[data_2v2['enemyComp'].str.contains(c)]
+        df['wins'] = df['win'].astype(int)
+        df['games'] = 1
+        df = df.groupby(['enemyComp']).agg({'wins': 'sum', 'games': 'sum'})
+        df['winrate'] = df['wins'] / df['games']
+        df['winrate'] = df['winrate'].apply(lambda x: "{:.1%}".format(x))
+        df = df.sort_values(by=['winrate'], ascending=False)
+        df = df.reset_index()
+        new_df = new_df.append(df)
+    return new_df
