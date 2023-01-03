@@ -65,8 +65,8 @@ def is_loss(df: pd.DataFrame) -> pd.DataFrame:
 
 def cleanup_data(df: pd.DataFrame) -> pd.DataFrame:
     data = df.shift(periods=1, axis=1)
-    data['startTime'] = pd.to_datetime(data['startTime'], unit='s')
-    data['endTime'] = pd.to_datetime(data['endTime'], unit='s')
+    data['startTime'] = pd.to_datetime(data['startTime'], unit='s', format='%Y-%m-%d %H:%M')
+    data['endTime'] = pd.to_datetime(data['endTime'], unit='s', format='%Y-%m-%d %H:%M')
     data = is_2v2(data)
     data = is_3v3(data)
     data = is_5v5(data)
