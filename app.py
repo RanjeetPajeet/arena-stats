@@ -63,8 +63,9 @@ with tab1:
 #         st.markdown("### Winrates per map")
 #         st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
         st.markdown("### Rating over time")
-        st.write(plot_data(st.session_state.data_2v2))
         st.write(plot_data2(st.session_state.data_2v2))
+        st.write(plot_data(st.session_state.data_2v2))
+        
         
 
 with tab2:
