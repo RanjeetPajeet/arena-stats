@@ -23,7 +23,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
                        alt.GradientStop(color="#60b4ff", offset=1)],  # top color
                 x1=1, x2=1, y1=1, y2=0,
             ),
-            opacity = 0.25,
+            opacity = 0.15,
             strokeWidth=2,
             interpolate="monotone",
             clip=True,
