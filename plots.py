@@ -7,15 +7,17 @@ import altair as alt
 def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     data = data.copy()
     if is3v3:
+        data2 = data.copy()
         data2 = data[11:]
-        data2 = pd.concat([data2[:102], data2[125:]])
-        data = data2.copy()
+        data2 = pd.concat([data[:102], data[125:]])
+        data2["matchNum"] = [i+1 for i in range(len(data2))]
     data["matchNum"] = [i+1 for i in range(len(data))]
     data["Match"] = data["matchNum"]        # added for better tooltip
     data["Rating"] = data["newTeamRating"]  # added for better tooltip
     min_rating = min(data["newTeamRating"])
     max_rating = max(data["newTeamRating"])
     ylims = (int(min_rating/1.01), int(max_rating*1.05))
+    xlims = ( min(data2["matchNum"]), max(data2["matchNum"]) ) if is3v3 else (min(data["matchNum"]), max(data["matchNum"]))
     
     data["maxRating"] = [max_rating for i in range(len(data))]
     data["Max Rating"] = data["maxRating"]  # added for better tooltip
