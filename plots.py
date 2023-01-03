@@ -33,7 +33,7 @@ def plot_data2(data: pd.DataFrame) -> alt.Chart:
             color=alt.Gradient(
                 gradient="linear",
                 stops=[alt.GradientStop(color="#31333F", offset=0),     # bottom color
-                       alt.GradientStop(color="#0068c9", offset=1)],  # top color
+                       alt.GradientStop(color="#0068c9", offset=0.5)],  # top color
                 x1=1, x2=1, y1=1, y2=0,
             ),
             opacity = 0.5,
