@@ -54,6 +54,8 @@ with tab1:
             st.markdown("### Winrates per map")
             st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
         
+        st.markdown("### Winrates per class")
+        st.write(get_2v2_winrates_per_class(st.session_state.data_2v2))
 #         st.markdown("### Winrates")
 #         st.write(get_2v2_winrates(st.session_state.data_2v2))
         spacer()
