@@ -12,7 +12,7 @@ hide_element("footer", "class", "css-1lsmgbg egzxvld0")
 
 
 def spacer():
-  st.markdown("##")
+  st.markdown("## ")
  
 
 
@@ -26,6 +26,7 @@ if 'arena_data' not in st.session_state:
 
 
 st.markdown("# Arena Stats")
+spacer()
 
 
 
