@@ -46,11 +46,19 @@ with tab1:
     if st.session_state.data_2v2 is not None:
         st.write(st.session_state.data_2v2[::-1])
         spacer()
-        st.markdown("### Winrates")
-        st.write(get_2v2_winrates(st.session_state.data_2v2))
+        per_comp_2v2, per_map_2v2 = st.columns(2)
+        with per_comp_2v2:
+            st.markdown("### Winrates")
+            st.write(get_2v2_winrates(st.session_state.data_2v2))
+        with per_map_2v2:
+            st.markdown("### Winrates per map")
+            st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
+        
+#         st.markdown("### Winrates")
+#         st.write(get_2v2_winrates(st.session_state.data_2v2))
         spacer()
-        st.markdown("### Winrates per map")
-        st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
+#         st.markdown("### Winrates per map")
+#         st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
         st.markdown("### Rating over time")
         
 
