@@ -26,7 +26,6 @@ if 'arena_data' not in st.session_state:
 
 
 st.markdown("# Arena Stats")
-st.markdown("---")
 
 
 
