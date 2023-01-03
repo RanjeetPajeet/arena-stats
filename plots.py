@@ -6,7 +6,7 @@ import altair as alt
 
 def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     data = data.copy()
-    if is3v3: data = data[13:]
+    if is3v3: data = data[12:]
     data["matchNum"] = [i+1 for i in range(len(data))]
     min_rating = min(data["newTeamRating"])
     max_rating = max(data["newTeamRating"])
