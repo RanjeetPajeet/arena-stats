@@ -128,19 +128,19 @@ def get_3v3_data() -> pd.DataFrame:
     teamPlayerClass1s,  teamPlayerClass2s,  teamPlayerClass3s  = [], [], []
     enemyPlayerClass1s, enemyPlayerClass2s, enemyPlayerClass3s = [], [], []
     for index,row in data.iterrows():
-        teamPlayerClass1s.append(row['teamPlayerClass1'])
-        teamPlayerClass2s.append(row['teamPlayerClass2'])
-        teamPlayerClass3s.append(row['teamPlayerClass3'])
-        enemyPlayerClass1s.append(row['enemyPlayerClass1'])
-        enemyPlayerClass2s.append(row['enemyPlayerClass2'])
-        enemyPlayerClass3s.append(row['enemyPlayerClass3'])
+        teamPlayerClass1s.append(row['teamPlayerClass1'].title())
+        teamPlayerClass2s.append(row['teamPlayerClass2'].title())
+        teamPlayerClass3s.append(row['teamPlayerClass3'].title())
+        enemyPlayerClass1s.append(row['enemyPlayerClass1'].title())
+        enemyPlayerClass2s.append(row['enemyPlayerClass2'].title())
+        enemyPlayerClass3s.append(row['enemyPlayerClass3'].title())
     teamComps  = []
     enemyComps = []
     for i in range(len(teamPlayerClass1s)):
         teamClasses = sort_tuple((teamPlayerClass1s[i], teamPlayerClass2s[i], teamPlayerClass3s[i]))
         enemyClasses = sort_tuple((enemyPlayerClass1s[i], enemyPlayerClass2s[i], enemyPlayerClass3s[i]))
-        teamComps.append(teamClasses[0] + ' ' + teamClasses[1] + ' ' + teamClasses[2])
-        enemyComps.append(enemyClasses[0] + ' ' + enemyClasses[1] + ' ' + enemyClasses[2])
+        teamComps.append(teamClasses[0] + ' - ' + teamClasses[1] + ' - ' + teamClasses[2])
+        enemyComps.append(enemyClasses[0] + ' - ' + enemyClasses[1] + ' - ' + enemyClasses[2])
     data_3v3['win']  = data['isWin']
     data_3v3['date'] = data['startTime']
     data_3v3['map']  = data['mapName']
