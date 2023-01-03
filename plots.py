@@ -8,7 +8,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     data = data.copy()
     if is3v3: data = data[11:]
     data["matchNum"] = [i+1 for i in range(len(data))]
-    data["Match #"] = data["matchNum"]      # added for better tooltip
+    data["Match"] = data["matchNum"]        # added for better tooltip
     data["Rating"] = data["newTeamRating"]  # added for better tooltip
     min_rating = min(data["newTeamRating"])
     max_rating = max(data["newTeamRating"])
@@ -31,7 +31,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
         ).encode(
             x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=(min(data["matchNum"]), max(data["matchNum"])))),
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims)),
-            tooltip=["Match #", "Rating"]
+            tooltip=["Match", "Rating"]
     ) + alt.Chart(data).mark_line(color = "#ffffff",opacity = 0.05,strokeWidth = 2).encode(
         x=alt.X("matchNum", axis=alt.Axis(title="Match #")),
         y=alt.Y("maxRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
