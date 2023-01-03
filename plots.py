@@ -35,7 +35,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
             clip=True,
             line=True,
         ).encode(
-            x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=(min(data["matchNum"]), max(data["matchNum"])))),
+            x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=xlims)),
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims)),
             tooltip=["Match", "Rating"]
     ) + alt.Chart(data).mark_line(color = "#ffffff",opacity = 0.05,strokeWidth = 2).encode(
