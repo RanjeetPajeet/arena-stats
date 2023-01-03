@@ -88,10 +88,10 @@ def get_2v2_data() -> pd.DataFrame:
     teamPlayerClass1s,  teamPlayerClass2s  = [], []
     enemyPlayerClass1s, enemyPlayerClass2s = [], []
     for index,row in data.iterrows():
-        teamPlayerClass1s.append(row['teamPlayerClass1'])
-        teamPlayerClass2s.append(row['teamPlayerClass2'])
-        enemyPlayerClass1s.append(row['enemyPlayerClass1'])
-        enemyPlayerClass2s.append(row['enemyPlayerClass2'])
+        teamPlayerClass1s.append(row['teamPlayerClass1'].title())
+        teamPlayerClass2s.append(row['teamPlayerClass2'].title())
+        enemyPlayerClass1s.append(row['enemyPlayerClass1'].title())
+        enemyPlayerClass2s.append(row['enemyPlayerClass2'].title())
     teamComps = []
     enemyComps = []
     for i in range(len(teamPlayerClass1s)):
