@@ -34,7 +34,7 @@ def plot_data(data: pd.DataFrame) -> alt.Chart:
         titleFont="Calibri", titleColor="#ffffff",    titlePadding=20,
         titleFontSize=22,    titleFontStyle="italic", titleFontWeight="bold",
         labelFont="Calibri", labelColor="#ffffff",    labelPadding=10,
-        labelFontSize=14,    labelFontWeight="bold",
+        labelFontSize=18,    labelFontWeight="bold",
     )
     chart = chart.configure_axisX(
         grid=False,          titleOpacity=1,
