@@ -16,7 +16,8 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     min_rating = min(data["newTeamRating"])
     max_rating = max(data["newTeamRating"])
     ylims = (int(min_rating/1.01), int(max_rating*1.05))
-    xlims = (min(data["matchNum"]), max(data["matchNum"]))
+    xlims = (0, len(data))
+#     xlims = (min(data["matchNum"]), max(data["matchNum"]))
     
     data["maxRating"] = [max_rating for i in range(len(data))]
     data["Max Rating"] = data["maxRating"]  # added for better tooltip
