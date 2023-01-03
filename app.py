@@ -68,10 +68,19 @@ with tab2:
     if st.session_state.data_3v3 is not None:
         st.write(st.session_state.data_3v3[::-1])
         spacer()
-        st.markdown("### Winrates")
-        st.write(get_3v3_winrates(st.session_state.data_3v3))
+        per_comp_3v3, per_map_3v3 = st.columns(2)
+        with per_comp_3v3:
+            st.markdown("### Winrates per comp")
+            st.write(get_3v3_winrates(st.session_state.data_3v3))
+        with per_map_3v3:
+            st.markdown("### Winrates per map")
+            st.write(get_3v3_winrates_per_map(st.session_state.data_3v3))
+        
+#         st.markdown("### Winrates")
+#         st.write(get_3v3_winrates(st.session_state.data_3v3))
         spacer()
         st.markdown("### Rating over time")
+        st.write(plot_data2(st.session_state.data_3v3))
 
 with tab3:
     st.header("5v5 Data")
