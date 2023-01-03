@@ -9,7 +9,7 @@ def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     if is3v3:
 #         data = data.copy()
         data = data[11:]
-#         data = pd.concat([data[:102], data[125:]])
+        data = pd.concat([data[:102], data[125:]])
     data["matchNum"] = [i+1 for i in range(len(data))]
     data["Match"] = data["matchNum"]        # added for better tooltip
     data["Rating"] = data["newTeamRating"]  # added for better tooltip
