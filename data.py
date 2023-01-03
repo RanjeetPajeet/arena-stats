@@ -213,8 +213,7 @@ def get_2v2_winrates(data_2v2: pd.DataFrame) -> pd.DataFrame:
     data_2v2['games'] = 1
     data_2v2 = data_2v2.groupby(['enemyComp']).agg({'win': 'sum', 'games': 'sum'})
     data_2v2['winrate'] = data_2v2['win'] / data_2v2['games']
-    # format the winrate column so it's a percentage and has 1 decimal place
-    data_2v2['winrate'] = data_2v2['winrate'].apply(lambda x: "{:.1%}".format(x))
     data_2v2 = data_2v2.sort_values(by=['winrate'], ascending=False)
+    data_2v2['winrate'] = data_2v2['winrate'].apply(lambda x: "{:.1%}".format(x))
     data_2v2 = data_2v2.reset_index()
     return data_2v2
