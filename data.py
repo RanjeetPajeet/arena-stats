@@ -227,9 +227,8 @@ def get_3v3_winrates(data_3v3: pd.DataFrame) -> pd.DataFrame:
     data_3v3['win'] = data_3v3['win'].astype(int)
     data_3v3['games'] = 1
     data_3v3 = data_3v3.groupby(['enemyComp']).agg({'win': 'sum', 'games': 'sum'})
-    data_3v3['winrate'] = data_3v3['win'] / data_3v3['games']
-    # format the winrate column so it's a percentage and has 1 decimal place
-    data_3v3['winrate'] = data_3v3['winrate'].apply(lambda x: "{:.1%}".format(x))
+    data_3v3['winrate'] = data_3v3['win'] / data_3v3['games']e
     data_3v3 = data_3v3.sort_values(by=['winrate'], ascending=False)
+    data_3v3['winrate'] = data_3v3['winrate'].apply(lambda x: "{:.1%}".format(x))
     data_3v3 = data_3v3.reset_index()
     return data_3v3
