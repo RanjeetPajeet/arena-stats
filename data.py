@@ -208,9 +208,6 @@ def get_5v5_data() -> pd.DataFrame:
 
     
 def get_2v2_winrates(data_2v2: pd.DataFrame) -> pd.DataFrame:
-    """
-    Finds the winrates for each unique enemy comp in the data.
-    """
     data_2v2['wins'] = data_2v2['win'].astype(int)
     data_2v2['games'] = 1
     data_2v2 = data_2v2.groupby(['enemyComp']).agg({'wins': 'sum', 'games': 'sum'})
@@ -223,9 +220,6 @@ def get_2v2_winrates(data_2v2: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_3v3_winrates(data_3v3: pd.DataFrame) -> pd.DataFrame:
-    """
-    Finds the winrates for each unique enemy comp in the data.
-    """
     data_3v3['wins'] = data_3v3['win'].astype(int)
     data_3v3['games'] = 1
     data_3v3 = data_3v3.groupby(['enemyComp']).agg({'wins': 'sum', 'games': 'sum'})
@@ -234,3 +228,30 @@ def get_3v3_winrates(data_3v3: pd.DataFrame) -> pd.DataFrame:
     data_3v3['winrate'] = data_3v3['winrate'].apply(lambda x: "{:.1%}".format(x))
     data_3v3 = data_3v3.reset_index()
     return data_3v3
+
+
+
+def get_5v5_winrates(data_5v5: pd.DataFrame) -> pd.DataFrame:
+    data_5v5['wins'] = data_5v5['win'].astype(int)
+    data_5v5['games'] = 1
+    data_5v5 = data_5v5.groupby(['enemyComp']).agg({'wins': 'sum', 'games': 'sum'})
+    data_5v5['winrate'] = data_5v5['wins'] / data_5v5['games']
+    data_5v5 = data_5v5.sort_values(by=['winrate'], ascending=False)
+    data_5v5['winrate'] = data_5v5['winrate'].apply(lambda x: "{:.1%}".format(x))
+    data_5v5 = data_5v5.reset_index()
+    return data_5v5
+
+
+
+def get_2v2_winrates_per_map(data_2v2: pd.DataFrame) -> pd.DataFrame:
+    """
+    Finds the winrates for each unique map in the data.
+    """
+    data_2v2['win'] = data_2v2['win'].astype(int)
+    data_2v2['games'] = 1
+    data_2v2 = data_2v2.groupby(['map']).agg({'win': 'sum', 'games': 'sum'})
+    data_2v2['winrate'] = data_2v2['win'] / data_2v2['games']
+    data_2v2 = data_2v2.sort_values(by=['winrate'], ascending=False)
+    data_2v2['winrate'] = data_2v2['winrate'].apply(lambda x: "{:.1%}".format(x))
+    data_2v2 = data_2v2.reset_index()
+    return data_2v2
