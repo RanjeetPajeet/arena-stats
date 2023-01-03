@@ -45,8 +45,9 @@ def plot_data2(data: pd.DataFrame) -> alt.Chart:
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
     )
     chart = chart.properties(height=600)
+    chart = chart.properties(width=600)
     chart = chart.configure_axisY(
-        grid=True,           gridOpacity=0.2,
+        grid=True,           gridOpacity=0.2,         tickCount=6,
         titleFont="Calibri", titleColor="#ffffff",    titlePadding=20,
         titleFontSize=22,    titleFontStyle="italic", titleFontWeight="bold",
         labelFont="Calibri", labelColor="#ffffff",    labelPadding=10,
