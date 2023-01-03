@@ -44,13 +44,19 @@ def plot_data2(data: pd.DataFrame) -> alt.Chart:
             x=alt.X("matchNum", axis=alt.Axis(title="Match #"), scale=alt.Scale(domain=(min(data["matchNum"]), max(data["matchNum"])))),
             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
     )
+    chart = chart.properties(height=600)
+    chart = chart.configure_axisY(
+        grid=True,           gridOpacity=0.2,
+        titleFont="Calibri", titleColor="#ffffff",    titlePadding=20,
+        titleFontSize=22,    titleFontStyle="italic", titleFontWeight="bold",
+        labelFont="Calibri", labelColor="#ffffff",    labelPadding=10,
+        labelFontSize=14,    labelFontWeight="bold",
+    )
+    chart = chart.configure_axisX(
+        grid=False,          titleOpacity=1,
+        labelFont="Calibri", labelColor="#ffffff",   labelPadding=10,
+        labelFontSize=14,    labelFontWeight="bold",
+    )
     
-    
-#     chart = alt.Chart(data).mark_line(
-#             color="#83c9ff",
-#             strokeWidth=2,
-#         ).encode(
-#             x=alt.X("matchNum", axis=alt.Axis(title="Match #")),
-#             y=alt.Y("newTeamRating", axis=alt.Axis(title="Rating"), scale=alt.Scale(domain=ylims))
-#     )
+
     return chart
