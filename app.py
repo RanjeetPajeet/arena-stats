@@ -60,6 +60,7 @@ with tab1:
         spacer()
         st.markdown("### Rating over time")
         st.write(plot_data(st.session_state.data_2v2))
+        st.write(len(st.session_state.data_2v2))
         
         
 
