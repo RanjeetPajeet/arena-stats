@@ -61,10 +61,10 @@ with tab1:
     spacer()
     
     if season_6:
-        st.header("S6 2v2 Data")
+        st.header("Season 6 2v2 Data")
     
     else:
-        st.header("S5 2v2 Data")
+        st.header("Season 5 2v2 Data")
         if st.session_state.data_2v2 is not None:
             st.write(st.session_state.data_2v2[::-1])
             spacer()
@@ -86,10 +86,10 @@ with tab2:
     spacer()
     
     if season_6:
-        st.header("S6 3v3 Data")
+        st.header("Season 6 3v3 Data")
     
     else:
-        st.header("S5 3v3 Data")
+        st.header("Season 5 3v3 Data")
         if st.session_state.data_3v3 is not None:
             st.write(st.session_state.data_3v3[::-1])
             spacer()
@@ -107,10 +107,10 @@ with tab3:
     spacer()
     
     if season_6:
-        st.header("S6 5v5 Data")
+        st.header("Season 6 5v5 Data")
     
     else:
-        st.header("S5 5v5 Data")
+        st.header("Season 5 5v5 Data")
         if st.session_state.data_5v5 is not None:
             st.write(st.session_state.data_5v5[::-1])
             spacer()
