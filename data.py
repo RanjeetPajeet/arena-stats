@@ -118,6 +118,16 @@ def get_2v2_data() -> pd.DataFrame:
     return data_2v2
 
 
+def get_s6_2v2_data() -> pd.DataFrame:
+    data_2v2 = get_2v2_data()
+    # get only season 6 data (all records after 2023-01-19)
+    data_2v2_s6 = data_2v2[data_2v2['date'] > '2023-01-19']
+    return data_2v2_s6
+
+
+
+
+
 
 def get_3v3_data() -> pd.DataFrame:
     data = read_csv()
