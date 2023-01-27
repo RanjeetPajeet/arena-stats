@@ -79,18 +79,19 @@ with tab1:
     else:
         st.header("Season 5 2v2 Data")
         if st.session_state.data_2v2 is not None:
-            st.write(st.session_state.data_2v2[::-1])
+            s5_data_2v2 = get_s5_2v2_data()
+            st.write(s5_data_2v2[::-1])
             spacer()
             per_comp_2v2, per_map_2v2 = st.columns(2)
             with per_comp_2v2:
                 st.markdown("### Winrates per comp")
-                st.write(get_2v2_winrates(st.session_state.data_2v2))
+                st.write(get_2v2_winrates(s5_data_2v2))
             with per_map_2v2:
                 st.markdown("### Winrates per map")
-                st.write(get_2v2_winrates_per_map(st.session_state.data_2v2))
+                st.write(get_2v2_winrates_per_map(s5_data_2v2))
             spacer()
             st.markdown("### Rating over time")
-            st.write(plot_data(st.session_state.data_2v2))
+            st.write(plot_data(s5_data_2v2))
 
 
 
