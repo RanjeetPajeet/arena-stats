@@ -75,7 +75,6 @@ with tab1:
             spacer()
             st.markdown("### Rating over time")
             st.write(plot_data(st.session_state.s6_data_2v2))
-#             st.write(len(st.session_state.s6_data_2v2))
     
     else:
         st.header("Season 5 2v2 Data")
@@ -92,7 +91,6 @@ with tab1:
             spacer()
             st.markdown("### Rating over time")
             st.write(plot_data(st.session_state.data_2v2))
-            st.write(len(st.session_state.data_2v2))
 
 
 
@@ -101,6 +99,16 @@ with tab2:
     
     if season_6:
         st.header("Season 6 3v3 Data")
+        if st.session_state.s6_data_3v3 is not None:
+            st.write(st.session_state.s6_data_3v3[::-1])
+            spacer()
+            st.markdown("### Winrates per map")
+            st.write(get_3v3_winrates_per_map(st.session_state.s6_data_3v3))
+            st.markdown("### Winrates per comp")
+            st.write(get_3v3_winrates(st.session_state.s6_data_3v3))
+            spacer()
+            st.markdown("### Rating over time")
+            st.write(plot_data(st.session_state.s6_data_3v3,True))
     
     else:
         st.header("Season 5 3v3 Data")
