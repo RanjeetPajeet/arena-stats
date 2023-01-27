@@ -118,6 +118,12 @@ def get_2v2_data() -> pd.DataFrame:
     return data_2v2
 
 
+def get_s5_2v2_data() -> pd.DataFrame:
+    data_2v2 = get_2v2_data()
+    data_2v2_s5 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) <= 2023 and int(entry.split('-')[1]) <= 1 and int(entry.split('-')[2].split(' ')[0]) <= 16)]
+    return data_2v2_s5
+
+
 def get_s6_2v2_data() -> pd.DataFrame:
     data_2v2 = get_2v2_data()
     data_2v2_s6 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
