@@ -32,11 +32,11 @@ if 'data_5v5' not in st.session_state:
 if 's6_data_2v2' not in st.session_state:
     st.session_state.s6_data_2v2 = get_s6_2v2_data()
 
-# if 's6_data_3v3' not in st.session_state:
-#     st.session_state.s6_data_3v3 = get_s6_3v3_data()
+if 's6_data_3v3' not in st.session_state:
+    st.session_state.s6_data_3v3 = get_s6_3v3_data()
 
-# if 's6_data_5v5' not in st.session_state:
-#     st.session_state.s6_data_5v5 = get_s6_5v5_data()
+if 's6_data_5v5' not in st.session_state:
+    st.session_state.s6_data_5v5 = get_s6_5v5_data()
 
 
 
@@ -62,15 +62,25 @@ with tab1:
     
     if season_6:
         st.header("Season 6 2v2 Data")
-        all_data = st.session_state.s6_data_2v2[::-1]
-        st.write(all_data)
-        spacer()
+        if st.session_state.s6_data_2v2 is not None:
+            st.write(st.session_state.s6_data_2v2[::-1])
+            spacer()
+            per_comp_2v2, per_map_2v2 = st.columns(2)
+            with per_comp_2v2:
+                st.markdown("### Winrates per comp")
+                st.write(get_2v2_winrates(st.session_state.s6_data_2v2))
+            with per_map_2v2:
+                st.markdown("### Winrates per map")
+                st.write(get_2v2_winrates_per_map(st.session_state.s6_data_2v2))
+            spacer()
+            st.markdown("### Rating over time")
+            st.write(plot_data(st.session_state.s6_data_2v2))
+#             st.write(len(st.session_state.s6_data_2v2))
     
     else:
         st.header("Season 5 2v2 Data")
         if st.session_state.data_2v2 is not None:
-            all_data = st.session_state.data_2v2[::-1]
-            st.write(all_data)
+            st.write(st.session_state.data_2v2[::-1])
             spacer()
             per_comp_2v2, per_map_2v2 = st.columns(2)
             with per_comp_2v2:
