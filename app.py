@@ -67,10 +67,7 @@ with tab1:
     else:
         st.header("Season 5 2v2 Data")
         if st.session_state.data_2v2 is not None:
-            all_data1 = st.session_state.data_2v2
             all_data = st.session_state.data_2v2[::-1]
-            s6_data = all_data1[ all_data1['date'] > datetime.datetime(year=2023,month=1,day=19) ]
-            st.write(s6_data)
             st.write(all_data)
             spacer()
             per_comp_2v2, per_map_2v2 = st.columns(2)
