@@ -65,7 +65,7 @@ def is_loss(df: pd.DataFrame) -> pd.DataFrame:
 
 def only_season_5(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
-    datetime_ = lambda datestr: datetime.datetime(year=int(datestr.split('-')[0]), month=int(entry.split('-')[1]), day=int(entry.split('-')[2].split(' ')[0]))
+    datetime_ = lambda datestr: datetime.datetime(year=int(datestr.split('-')[0]), month=int(datestr.split('-')[1]), day=int(datestr.split('-')[2].split(' ')[0]))
     data = df[df['date'].apply(lambda entry: datetime_(entry) < datetime.datetime(year=2023,month=1,day=17))]
 #     data = df[df['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
     return data
