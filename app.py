@@ -30,14 +30,14 @@ if 'data_3v3' not in st.session_state:
 if 'data_5v5' not in st.session_state:
     st.session_state.data_5v5 = get_5v5_data()
     
-# if 's6_data_2v2' not in st.session_state:
-#     st.session_state.data_2v2 = get_s6_2v2_data()
+if 's6_data_2v2' not in st.session_state:
+    st.session_state.s6_data_2v2 = get_s6_2v2_data()
 
 # if 's6_data_3v3' not in st.session_state:
-#     st.session_state.data_3v3 = get_s6_3v3_data()
+#     st.session_state.s6_data_3v3 = get_s6_3v3_data()
 
 # if 's6_data_5v5' not in st.session_state:
-#     st.session_state.data_5v5 = get_s6_5v5_data()
+#     st.session_state.s6_data_5v5 = get_s6_5v5_data()
 
 
 
@@ -63,6 +63,9 @@ with tab1:
     
     if season_6:
         st.header("Season 6 2v2 Data")
+        all_data = st.session_state.data_2v2[::-1]
+        st.write(all_data)
+        spacer()
     
     else:
         st.header("Season 5 2v2 Data")
