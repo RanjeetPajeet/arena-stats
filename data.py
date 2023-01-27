@@ -120,7 +120,7 @@ def get_2v2_data() -> pd.DataFrame:
 
 def get_s6_2v2_data() -> pd.DataFrame:
     data_2v2 = get_2v2_data()
-    data_2v2_s6 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 19)]
+    data_2v2_s6 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
     return data_2v2_s6
 
 
@@ -169,6 +169,15 @@ def get_3v3_data() -> pd.DataFrame:
     return data_3v3
 
 
+def get_s6_3v3_data() -> pd.DataFrame:
+    data_3v3 = get_3v3_data()
+    data_3v3_s6 = data_3v3[data_3v3['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
+    return data_3v3_s6
+
+
+
+
+
 
 def get_5v5_data() -> pd.DataFrame:
     data = read_csv()
@@ -213,6 +222,15 @@ def get_5v5_data() -> pd.DataFrame:
     data_5v5['enemyDiffRating'] = data['enemyDiffRating']
     data_5v5['enemyMmr'] = data['enemyMmr']
     return data_5v5
+
+
+def get_s6_5v5_data() -> pd.DataFrame:
+    data_5v5 = get_5v5_data()
+    data_5v5_s6 = data_5v5[data_5v5['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
+    return data_5v5_s6
+
+
+
     
 
     
