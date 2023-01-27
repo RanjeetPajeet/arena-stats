@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 
 
@@ -62,6 +63,21 @@ def is_loss(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def only_season_5(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    datetime_ = lambda datestr: datetime.datetime(year=int(datestr.split('-')[0]), month=int(entry.split('-')[1]), day=int(entry.split('-')[2].split(' ')[0]))
+    data = df[df['date'].apply(lambda entry: datetime_(entry) < datetime.datetime(year=2023,month=1,day=17))]
+#     data = df[df['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
+    return data
+
+
+def only_season_6(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    data = df[df['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
+    return data
+    
+
+
 
 def cleanup_data(df: pd.DataFrame) -> pd.DataFrame:
     data = df.shift(periods=1, axis=1)
@@ -120,7 +136,8 @@ def get_2v2_data() -> pd.DataFrame:
 
 def get_s5_2v2_data() -> pd.DataFrame:
     data_2v2 = get_2v2_data()
-    data_2v2_s5 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) <= 2023 and int(entry.split('-')[1]) <= 1 and int(entry.split('-')[2].split(' ')[0]) <= 16)]
+#     data_2v2_s5 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) <= 2023 and int(entry.split('-')[1]) <= 1 and int(entry.split('-')[2].split(' ')[0]) <= 16)]
+    data_2v2_s5 = only_season_5(data_2v2)
     return data_2v2_s5
 
 
