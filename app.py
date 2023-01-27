@@ -28,14 +28,28 @@ if 'data_3v3' not in st.session_state:
 
 if 'data_5v5' not in st.session_state:
     st.session_state.data_5v5 = get_5v5_data()
-
     
+# if 's6_data_2v2' not in st.session_state:
+#     st.session_state.data_2v2 = get_s6_2v2_data()
+
+# if 's6_data_3v3' not in st.session_state:
+#     st.session_state.data_3v3 = get_s6_3v3_data()
+
+# if 's6_data_5v5' not in st.session_state:
+#     st.session_state.data_5v5 = get_s6_5v5_data()
+
+
 
 # ---------------------------------------------------------------------- #
 
 
 
 st.markdown("# Arena Stats")
+spacer()
+
+
+
+season_6 = st.checkbox("Season 6", value=True)
 spacer()
 
 
@@ -61,8 +75,8 @@ with tab1:
         st.markdown("### Rating over time")
         st.write(plot_data(st.session_state.data_2v2))
         st.write(len(st.session_state.data_2v2))
-        
-        
+
+
 
 with tab2:
     spacer()
@@ -79,8 +93,8 @@ with tab2:
         st.markdown("### Rating over time")
         st.write(plot_data(st.session_state.data_3v3,True))
 
-        
-        
+
+
 with tab3:
     spacer()
     st.header("5v5 Data")
