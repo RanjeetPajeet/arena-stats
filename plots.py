@@ -6,14 +6,14 @@ import altair as alt
 
 def plot_data(data: pd.DataFrame, is3v3: bool = False) -> alt.Chart:
     data = data.copy()
-    if is3v3:
-#         data = data.copy()
-        data = data[11:]
-        data = pd.concat([data[:102], data[124:]])
-    else:
-        data1 = data[:97]
-        data2 = data[124:]
-        data = pd.concat([data1,data2])
+#     if is3v3:
+# #         data = data.copy()
+#         data = data[11:]
+#         data = pd.concat([data[:102], data[124:]])
+#     else:
+#         data1 = data[:97]
+#         data2 = data[124:]
+#         data = pd.concat([data1,data2])
     data["matchNum"] = [i+1 for i in range(len(data))]
     data["Match"] = data["matchNum"]        # added for better tooltip
     data["Rating"] = data["newTeamRating"]  # added for better tooltip
