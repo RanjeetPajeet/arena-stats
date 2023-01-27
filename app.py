@@ -45,6 +45,7 @@ if 'data_5v5' not in st.session_state:
 
 
 st.markdown("# Arena Stats")
+st.markdown("---")
 spacer()
 
 
