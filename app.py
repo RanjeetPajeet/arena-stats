@@ -1,7 +1,6 @@
 from data import *
 from misc import *
 from plots import *
-import datetime
 # import streamlit as st
 
 
@@ -63,7 +62,7 @@ with tab1:
     
     if season_6:
         st.header("Season 6 2v2 Data")
-        all_data = st.session_state.data_2v2[::-1]
+        all_data = st.session_state.s6_data_2v2[::-1]
         st.write(all_data)
         spacer()
     
