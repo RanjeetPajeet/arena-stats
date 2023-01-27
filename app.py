@@ -59,12 +59,12 @@ tab1, tab2, tab3 = st.tabs(["**2v2**", "**3v3**", "**5v5**"])
 
 with tab1:
     spacer()
-    st.header("2v2 Data")
     
     if season_6:
-        pass
+        st.header("S6 2v2 Data")
     
     else:
+        st.header("S5 2v2 Data")
         if st.session_state.data_2v2 is not None:
             st.write(st.session_state.data_2v2[::-1])
             spacer()
@@ -84,12 +84,12 @@ with tab1:
 
 with tab2:
     spacer()
-    st.header("3v3 Data")
     
     if season_6:
-        pass
+        st.header("S6 3v3 Data")
     
     else:
+        st.header("S5 3v3 Data")
         if st.session_state.data_3v3 is not None:
             st.write(st.session_state.data_3v3[::-1])
             spacer()
@@ -105,12 +105,12 @@ with tab2:
 
 with tab3:
     spacer()
-    st.header("5v5 Data")
     
     if season_6:
-        pass
+        st.header("S6 5v5 Data")
     
     else:
+        st.header("S5 5v5 Data")
         if st.session_state.data_5v5 is not None:
             st.write(st.session_state.data_5v5[::-1])
             spacer()
