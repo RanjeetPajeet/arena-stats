@@ -1,6 +1,7 @@
 from data import *
 from misc import *
 from plots import *
+import datetime
 # import streamlit as st
 
 
@@ -66,7 +67,7 @@ with tab1:
     else:
         st.header("Season 5 2v2 Data")
         if st.session_state.data_2v2 is not None:
-            st.write(st.session_state.data_2v2[::-1][0])
+#             st.write(st.session_state.data_2v2[::-1][  ])
             st.write(st.session_state.data_2v2[::-1])
             spacer()
             per_comp_2v2, per_map_2v2 = st.columns(2)
