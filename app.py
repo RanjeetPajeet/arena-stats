@@ -114,15 +114,16 @@ with tab2:
     else:
         st.header("Season 5 3v3 Data")
         if st.session_state.data_3v3 is not None:
-            st.write(st.session_state.data_3v3[::-1])
+            s5_data_3v3 = get_s5_3v3_data()
+            st.write(s5_data_3v3[::-1])
             spacer()
             st.markdown("### Winrates per map")
-            st.write(get_3v3_winrates_per_map(st.session_state.data_3v3))
+            st.write(get_3v3_winrates_per_map(s5_data_3v3))
             st.markdown("### Winrates per comp")
-            st.write(get_3v3_winrates(st.session_state.data_3v3))
+            st.write(get_3v3_winrates(s5_data_3v3))
             spacer()
             st.markdown("### Rating over time")
-            st.write(plot_data(st.session_state.data_3v3,True))
+            st.write(plot_data(s5_data_3v3,True))
 
 
 
