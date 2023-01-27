@@ -192,6 +192,13 @@ def get_3v3_data() -> pd.DataFrame:
     return data_3v3
 
 
+def get_s5_3v3_data() -> pd.DataFrame:
+    data_3v3 = get_3v3_data()
+#     data_2v2_s5 = data_2v2[data_2v2['date'].apply(lambda entry: int(entry.split('-')[0]) <= 2023 and int(entry.split('-')[1]) <= 1 and int(entry.split('-')[2].split(' ')[0]) <= 16)]
+    data_3v3_s5 = only_season_5(data_3v3)
+    return data_3v3_s5
+
+
 def get_s6_3v3_data() -> pd.DataFrame:
     data_3v3 = get_3v3_data()
     data_3v3_s6 = data_3v3[data_3v3['date'].apply(lambda entry: int(entry.split('-')[0]) >= 2023 and int(entry.split('-')[1]) >= 1 and int(entry.split('-')[2].split(' ')[0]) > 16)]
