@@ -157,11 +157,10 @@ with point_calculator_tab:
             check3v3 = st.checkbox("3v3")
         with col5:
             check5v5 = st.checkbox("5v5")
-        col_rating, col_submit = st.columns(2)
-        with col_rating:
-            arena_rating = st.number_input("Rating", min_value=0, max_value=3000, value=0, step=1)
-        with col_submit:
-            submitted = st.form_submit_button("Submit")
+
+        arena_rating = st.number_input("Rating", min_value=0, max_value=3000, value=0, step=1)
+        submitted = st.form_submit_button("Submit")
+        
         if submitted:
             if arena_rating > 1500:
                 points = 1511.26 / ( 1 + (1639.28*np.exp(-0.00412*arena_rating)) )
