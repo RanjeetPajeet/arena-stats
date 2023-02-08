@@ -1,6 +1,7 @@
 from data import *
 from misc import *
 from plots import *
+import numpy as np
 # import streamlit as st
 
 
@@ -148,4 +149,29 @@ with point_calculator_tab:
     spacer()
     
     with st.form(key="ap_calculator"):
-        spacer()
+        st.write("Arena Point estimation")
+        col2, col3, col5 = st.columns(3)
+        with col2:
+            check2v2 = st.checkbox("2v2")
+        with col3:
+            check3v3 = st.checkbox("3v3")
+        with col5:
+            check5v5 = st.checkbox("5v5")
+        col_rating, col_submit = st.columns(2)
+        with col_rating:
+            arena_rating = st.number_input("Rating", min_value=0, max_value=3000, value=0, step=1)
+        with col_submit:
+            submitted = st.form_submit_button("Submit")
+        if submitted:
+            if arena_rating > 1500:
+                points = 1511.26 / ( 1 + (1639.28*np.exp(-0.00412*arena_rating)) )
+            else:
+                points = 0.22*arena_rating + 14
+            if check2v2:
+                points = points*0.76
+            elif check3v3:
+                points = points*0.88
+            points = int(points)
+            
+            spacer()
+            st.write(f"Estimated points: {points}")
