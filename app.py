@@ -54,7 +54,7 @@ spacer()
 
 
 
-tab1, tab2, tab3 = st.tabs(["**2v2**", "**3v3**", "**5v5**"])
+tab1, tab2, tab3, point_calculator_tab = st.tabs(["**2v2**", "**3v3**", "**5v5**", "**AP Calculator**"])
 
 
 with tab1:
@@ -139,3 +139,12 @@ with tab3:
             st.write(st.session_state.data_5v5[::-1])
             spacer()
             st.markdown("### Rating over time")
+
+            
+            
+            
+            
+with point_calculator_tab:
+    spacer()
+    
+    
