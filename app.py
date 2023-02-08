@@ -147,5 +147,5 @@ with tab3:
 with point_calculator_tab:
     spacer()
     
-    with st.form():
+    with st.form(key="ap_calculator"):
         spacer()
