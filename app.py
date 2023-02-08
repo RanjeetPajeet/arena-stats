@@ -154,7 +154,7 @@ with point_calculator_tab:
         with col2:
             check2v2 = st.checkbox("2v2")
         with col3:
-            check3v3 = st.checkbox("3v3")
+            check3v3 = st.checkbox("3v3", value=True)
         with col5:
             check5v5 = st.checkbox("5v5")
 
